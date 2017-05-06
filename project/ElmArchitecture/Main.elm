@@ -24,13 +24,22 @@ type Msg
   = Increment
   | Decrement
 
+-- This update function displays some syntax features of Elm such as let-in
+-- expressions, control flow structures such as if-then-else and case-of,
+-- function currying and record update syntax.
 update : Msg -> Model -> Model
 update msg model =
   let
+    -- Increment function
     inc x = x + 1
+
+    -- Decrement function defined with partial application of the (+) operator
     dec = (+) 1
 
+    -- Mod function
     cycle m x = x % m
+
+    -- Mod function defined with if-then-else
     cycleIf m x =
       if x >= m then
         0
