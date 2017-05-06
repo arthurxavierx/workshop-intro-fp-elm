@@ -1,0 +1,16 @@
+{
+  "version": "1.0.0",
+  "summary": "Functional programming workshop using Elm",
+  "repository": "https://github.com/arthur-xavier/workshop-fp-elm.git",
+  "license": "MIT",
+  "source-directories": [
+    "./",
+    "nesting"
+  ],
+  "exposed-modules": [],
+  "dependencies": {
+    "elm-lang/core": "5.0.0 <= v < 6.0.0",
+    "elm-lang/html": "2.0.0 <= v < 3.0.0"
+  },
+  "elm-version": "0.18.0 <= v < 0.19.0"
+}
