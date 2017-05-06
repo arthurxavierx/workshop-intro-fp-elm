@@ -1,0 +1,22 @@
+<!DOCTYPE HTML>
+
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <script src="/_compile/Part2/Main.elm"></script>
+  </head>
+  <body>
+    <script type="text/javascript">
+      var NOTES_KEY = 'notes';
+
+      //
+      var storedNotes = localStorage.getItem(NOTES_KEY);
+
+      var app = runElmProgram(/* storedNotes ? JSON.parse(storedNotes) : [] */);
+
+      app.ports.saveNotes.subscribe(function(notes) {
+        localStorage.setItem(NOTES_KEY, JSON.stringify(notes));
+      });
+    </script>
+  </body>
+</html>
