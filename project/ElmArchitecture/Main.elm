@@ -14,10 +14,10 @@ main =
     }
 
 ---------------------------------------------------------------------- [ model ]
-type alias Model = Int
+type alias Model = { value : Int }
 
 model : Model
-model = 0
+model = { value = 0 }
 
 --------------------------------------------------------------------- [ update ]
 type Msg
@@ -26,18 +26,36 @@ type Msg
 
 update : Msg -> Model -> Model
 update msg model =
-  case msg of
-    Increment ->
-      model + 1
+  let
+    inc x = x + 1
+    dec = (+) 1
 
-    Decrement ->
-      model - 1
+    cycle m x = x % m
+    cycleIf m x =
+      if x >= m then
+        0
+      else if x < 0 then
+        m - 1
+      else
+        x
+  in
+    case msg of
+      Increment ->
+        { model | value = cycle 10 <| inc model.value }
+
+      Decrement ->
+        { model
+        | value =
+            model.value
+            |> dec
+            |> cycleIf 10
+        }
 
 ----------------------------------------------------------------------- [ view ]
 view :  Model -> Html Msg
-view model =
+view {value} =
   H.div []
     [ H.button [ E.onClick Decrement ] [ text "-" ]
-    , H.h3 [] [ text (toString model) ]
+    , H.h3 [] [ text (toString value) ]
     , H.button [ E.onClick Increment ] [ text "+" ]
     ]
