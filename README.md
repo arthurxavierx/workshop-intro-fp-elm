@@ -1,6 +1,6 @@
 # Introdução à programação funcional tipada
 
-[Slides](https://goo.gl/8pbJDK)
+[Slides](https://www.slideshare.net/ArthurXavier7/programao-funcional-tipada-uma-introduo)
 
 ## Exercícios
 
@@ -11,6 +11,8 @@
   - 1.3\. Currying
   - 1.4\. Funções de primeira classe
   - 1.5\. Composição de funções
+
+#### TODO
 - 2\. [Tipos](intro/2-types)
 - 3\. [Imutabilidade](intro/3-immutability)
 - 4\. [Coleções](intro/4-collections)
