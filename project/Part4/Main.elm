@@ -1,12 +1,14 @@
--- Nesta parte tornaremos o tipo Note polimórfico. Devemos modificá-lo para que
--- ele possa representar tanto notas no banco de dados quando notas na aplicação.
+-- In this part we'll make the `Note` type polymorphic. That means it will be
+-- parametrized by some other type. We shall modify it so that it can represent
+-- both notes in the database as notes in the application.
 --
--- As notas no banco de dados não devem possuir campo de identificação, para que
--- seja reduzido o espaço utilizado por elas.
+-- Notes in the database shall not have an identification field, so that we can
+-- optimize storage space.
 --
--- Uma solução é parametrizar o tipo Note em relação a um tipo i que representa
--- o campo de identificação de uma nota. Para uma nota na aplicação, o tipo das
--- notas é `Note Int`, e para uma nota no banco de dados, `Note ()`.
+-- One solution could be to parametrize the `Note` type over a type `i` which
+-- represents the type of the identification field of a note. Thus, in the
+-- context of the application, the type of the notes is `Note Int`, and in the
+-- database, it is `Note ()`
 port module Part4.Main exposing (..)
 
 import Html as H
@@ -40,8 +42,8 @@ type ModelState
   = Viewing
   | Editing Int String
 
--- Na função init será necessário, além de carregar as notas, mapear
--- identificadores únicos a cada nota.
+-- In the `init` function, besides loading the notes, we'll need to map
+-- unique identifiers to each note.
 init : List Note -> Model
 init notes =
   { notes = notes
@@ -56,9 +58,9 @@ type Msg
   | Input String
   | Commit
 
--- Como o tipo nota será polimórfico, deveremos passar para a função update
--- uma função que retorna o próximo identificador único para a próxima nota
--- a ser criada, que deverá ser utilizada quando de uma mensagem Add.
+-- As the type of notes will be polymorphic, we shall pass to the `update`
+-- function a function which returns the next unique identifier to the
+-- next possible note. This function should be used when of an `Add` message.
 update : Msg -> Model -> (Model, Cmd Msg)
 update msg model =
   let

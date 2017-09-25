@@ -20,9 +20,9 @@ main =
 
 ---------------------------------------------------------------------- [ model ]
 type alias Model = List Note
--- Modifique o modelo da aplicação para que seja possível saber se alguma nota
--- está sendo editada. Adicione também ao modelo o número de identificação da
--- próxima nota a ser criada.
+-- Modify the model of the application in order to know if a note is being
+-- edited. Also add to the model the identification number of the next note
+-- to be created.
 
 init : Model
 init =
@@ -31,15 +31,14 @@ init =
 --------------------------------------------------------------------- [ update ]
 type Msg
   = Add
-  -- Adicione novos valores no tipo Msg para permitir a edição de notas
-  -- Precisaremos de 3 operações:
-  -- - Focar uma nota:
-  --    modificar um estado no modelo para que seja possível identificar
-  --    qual nota está sendo editada;
-  -- - Modificar o conteúdo:
-  --    deve modificar um conteúdo temporário da nota em edição no modelo;
-  -- - Salvar as alterações (commit):
-  --    deve modificar a estrutura de dados com o novo conteúdo da nota editada.
+  -- Add new values to the Msg type to allow editing notes.
+  -- We'll need 3 operations:
+  -- - Focusing on a note:
+  --    modify a state in the model to identify which note is being edited;
+  -- - Modify the content:
+  --    should modify a temporary content of the note currently being edited;
+  -- - Save the changes (commit):
+  --    should modify the data structure with the new content of the edited note.
 
 update : Msg -> Model -> (Model, Cmd Msg)
 update msg model =
@@ -59,10 +58,10 @@ view model =
       , H.button [ E.onClick Add ] [ text "+" ]
       ]
 
--- Modifique a view para que sejam tratados os dois casos do estado do modelo:
--- quando alguma nota está sendo editada e quando nenhuma nota está sendo editada.
--- Recomenda-se a separação da função `noteHtml` em duas funções, uma para quando
--- a nota está sendo editada, e uma para quando está sendo visualizada.
+-- Modify the view so that both model states be handled: when a note is being
+-- edited and when none is.
+-- It's recommended that one splits up the `noteHtml` function into two separate
+-- functions: one for when a note is being edited and one for when it's viewed.
 
 noteHtml : Note -> Html Msg
 noteHtml n =

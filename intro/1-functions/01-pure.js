@@ -3,22 +3,22 @@
  * https://github.com/staltz/fp-js-workshop/tree/master/1-pure-functions
  */
 
-// função impura
+// impure function
 function greetImpure(name) {
   console.log(`Welcome ${name}!`);
 }
 
-// função pura
+// pure function
 function greetString(name) {
   return `Welcome ${name}!`;
 }
 
-// função pura
+// pure function
 function greetEval(name) {
   return `console.log('Welcome ${name}!')`;
 }
 
-// função pura
+// pure function
 function greetInstruction(name) {
   return {
     type: 'log',

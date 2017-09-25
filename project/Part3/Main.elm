@@ -1,13 +1,13 @@
--- Nesta parte veremos como Elm trata efeitos colaterais de entrada e saída.
--- Elm utiliza comunicação via mensagens com o "mundo externo" (JavaScript)
--- através de ports.
+-- In this part we shall see how Elm handles I/O side effects.
+-- Elm uses message-based communication with the "external world" (JavaScript)
+-- through ports.
 --
--- Uma port é um valor/funçao definido com a keyword port que deve produzir um
--- valor do tipo Cmd.
+-- A port is a value/function defined through the keyword `port`, which produces
+-- a value of type `Cmd`.
 --
--- Vamos definir uma port para salvar as notas via local storage. Da mesma forma
--- precisamos carregar as notas no início da aplicação. Isto pode ser feito
--- através da função init.
+-- We shall define a port to save the notes via local storage. In the same way
+-- we'll need to load the notes when the application starts. This could be done
+-- through the `init` function.
 port module Part3.Main exposing (..)
 
 import Html as H
@@ -21,11 +21,11 @@ import Styles exposing (..)
 import Workshop exposing (..)
 
 main =
-  -- Para que nossa aplicação possa receber valores do mundo externo, precisamos
-  -- trocar a função que define o Program para Html.programWithFlags. A função
-  -- programWithFlags difere da função program apenas no fato de que init vira
-  -- uma função que inicializa o modelo a partir de um parâmetro recebido do
-  -- mundo externo.
+  -- In order to receive values from the external world, we'll need to change
+  -- the function which defines our `Program` to use `Html.programWithFlags`.
+  -- This function is different from the `program` function only because `init`
+  -- becomes a function which initializes the model through a parameter
+  -- received from the external world.
   Html.program
     { init = pure init
     , update = update
@@ -44,7 +44,7 @@ type ModelState
   = Viewing
   | Editing Int String
 
--- init deve ser uma função que recebe uma lista de notas.
+-- `init` must be a function which receives a list of notes.
 init : Model
 init =
   let
@@ -65,8 +65,8 @@ type Msg
   | Input String
   | Commit
 
--- precisaremos retornar um comando que salva as notas no local storage quando
--- uma operação de Commit é realizada.
+-- we'll need to return a command which saves notes in local storage when a
+-- `Commit` operation is received.
 update : Msg -> Model -> (Model, Cmd Msg)
 update msg model =
   let

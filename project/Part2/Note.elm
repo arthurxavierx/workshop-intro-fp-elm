@@ -3,8 +3,8 @@ module Part2.Note exposing (..)
 import Html as H
 import Html exposing (Html, text)
 
--- Modifique o tipo nota e suas operações para que seja possível identificar
--- unicamente uma nota. Recomenda-se a adição de um campo `id` inteiro.
+-- Modify the `Note` type and its operations so that it be possible to
+-- uniquely identify a note. It's recommended to add an integer field `id`.
 
 type alias Note =
   { content : String

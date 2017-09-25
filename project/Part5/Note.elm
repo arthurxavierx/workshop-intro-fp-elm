@@ -3,15 +3,15 @@ module Part5.Note exposing (..)
 import Html as H
 import Html exposing (Html, text)
 
--- O tipo Note deverá ser parametrizado em um tipo c que representa o tipo do
--- conteúdo da nota, o campo content.
+-- The `Note` type shall be parametrized over a type `c` which represents the
+-- type of the note's content, the `content` field.
 type alias Note i =
   { id : i
   , content : String
   }
 
--- Será útil também definirmos uma função de alta ordem que aplica uma função
--- de conversão do tipo do conteúdo, um `map`.
+-- It will be useful to define a higher order function which applies a
+-- function which converts the type of the content, a `map` function.
 
 mkNote : i -> String -> Note i
 mkNote id content = { id = id, content = content }

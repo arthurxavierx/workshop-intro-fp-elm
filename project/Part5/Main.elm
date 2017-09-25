@@ -1,11 +1,11 @@
--- Nesta última parte parametrizaremos o tipo Note no tipo do conteúdo, de forma
--- que possamos trocar o tipo do conteúdo a qualquer momento, ou mesmo utilizar
--- tipos diferentes que representem o conteúdo das notas na aplicação e o
--- conteúdo das notas no banco de dados.
+-- In this last part we'll parametrize the `Note` type over the type of its
+-- content, so that we can change the content type at any moment, or even use
+-- different types to represent the content of notes in the context of the
+-- application and in the context of the database.
 --
--- Vamos utilizar notas no formato Markdown na aplicação. Para isto é definido
--- um módulo Final.Markdown que expõe tipos e funções necessárias para lidar com
--- este formato.
+-- We'll use notes in the Markdown format in the application. For that, a helper
+-- module `Final.Markdown` is defined. This module exposes the types and functions
+-- needed to handle this format.
 port module Part5.Main exposing (..)
 
 import Html as H
@@ -66,6 +66,10 @@ type Msg
 -- Deveremos modificar a função update para que o conteúdo seja serializado da
 -- forma correta, isto é, para que o tipo `Note Int Markdown` seja convertido
 -- para o formato serializável `Note () String`.
+
+-- We'll have to modify the `update` function so that the content be serialized
+-- in the right way. That is, so that the type `Note Int Markdown` be converted
+-- to the serializable format `Note () String`.
 update : Msg -> Model -> (Model, Cmd Msg)
 update msg model =
   let

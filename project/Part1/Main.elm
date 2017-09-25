@@ -23,7 +23,7 @@ type alias Model = List Note
 
 init : Model
 init =
-  [ -- Insira algumas notas aqui
+  [ -- Insert a few notes here
   ]
 
 --------------------------------------------------------------------- [ update ]
@@ -33,13 +33,13 @@ update : Msg -> Model -> (Model, Cmd Msg)
 update msg model =
   case msg of
     Add ->
-      pure model -- Modifique isto para inserir novas notas ao final da lista
+      pure model -- Modify this to insert new notes at the end of the list
 
 ----------------------------------------------------------------------- [ view ]
 view : Model -> Html Msg
 view model =
   H.div [ containerStyle ]
-    -- Modifique isto para mostrar as notas dentro do container
+    -- Change this to show the notes inside the container
     [ H.div [] [ text "Notes go here" ]
     , H.button [ E.onClick Add ] [ text "+" ]
     ]
